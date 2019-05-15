@@ -12,7 +12,7 @@
     yum: name=java-1.8.0-openjdk.x86_64 state=present
 
   - name: tomcat download
-    get_url: url=http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.41/bin/apache-tomcat-8.5.41.tar.gz dest=/root/
+    get_url: url=http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.41/bin/apache-tomcat-8.5.41.tar.gz dest=/root/ remote_src=yes
 
   - name: untar tomcat file
     unarchive: src=/root/apache-tomcat-8.5.41.tar.gz dest=/root
