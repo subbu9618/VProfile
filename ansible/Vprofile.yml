@@ -9,13 +9,3 @@
   handlers:
     - name: start nginx
       service: name=nginx state=started
-
-- name: Add Oracle Java PPA
-  apt_repository:
-    repo: ppa:webupd8team/java
-    state: present
-
-- name: Install Java 8
-  apt:
-    name: oracle-java8-installer
-    update_cache: yes
