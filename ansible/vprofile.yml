@@ -4,8 +4,8 @@
   gather_facts: False
   tasks:
 
-  - name: Install EPEL-release
-    yum: name=epel-release state=present
+  #- name: Install EPEL-release
+   # yum: name=epel-release state=present
 
 
   - name: Install java_1.8
