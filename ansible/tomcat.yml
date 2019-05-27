@@ -3,6 +3,8 @@
   become: yes
   gather_facts: False
   tasks:
+  #  name: update
+   # apt: name=sudo apt-get update 
 
   - name: install java 
     apt: name=openjdk-8-jdk -y state=installed update_cache=yes
