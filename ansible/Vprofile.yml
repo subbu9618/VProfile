@@ -1,29 +1,12 @@
 ---
-- hosts: tomcatservers
-  become: yes
-  gather_facts: False
+- hosts: droplets
   tasks:
+    - name: Installs nginx web server
+      apt: pkg=nginx state=installed update_cache=true
+      notify:
+        - start nginx
 
-  - name: install java
-    apt: name=openjdk-8-jdk state=installed update_cache=yes
-
-  - name: tomcat download
-    get_url: url=http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.41/bin/apache-tomcat-8.5.41.tar.gz dest=/root/
-
-  - name: untar tomcat file
-    unarchive: src=/root/apache-tomcat-8.5.41.tar.gz dest=/root remote_src=yes
-
-  - name: start tomcat service
-    shell: nohup /root/apache-tomcat-8.5.41/bin/startup.sh &
-
-  - name: Download latest VProfile.war file
-    get_url: url=http://{{nexusip}}:8081/nexus/content/repositories/VProfile-repo/{{groupid}}/{{time}}/{{build}}/{{vprofile_version}} dest=/tmp/ mode=755
-   
-
-  - name: Copy artifact to tomcat folder
-    shell: cp /tmp/{{vprofile_version}} /root/apache-tomcat-8.5.41/webapps
-
-  - name: Link latest vprofile version
-    file: src=/root/apache-tomcat-8.5.41/webapps/{{time}}-{{build}} dest=/root/apache-tomcat-8.5.41/webapps/VProfile state=link
-
+  handlers:
+    - name: start nginx
+      service: name=nginx state=started
 
