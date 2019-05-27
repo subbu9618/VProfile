@@ -3,11 +3,11 @@
   become: yes
   gather_facts: False
   tasks:
-  #  name: update
-   # apt: name=sudo apt-get update 
+    - name: update
+      apt: name=sudo apt update 
 
-  - name: install java 
-    apt: name=openjdk-8-jdk -y state=installed update_cache=yes
+  #- name: install java 
+   # apt: name=openjdk-8-jdk -y state=installed update_cache=yes
 
   #- name: tomcat download
    # get_url: url=http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.41/bin/apache-tomcat-8.5.41.tar.gz dest=/root/ 
