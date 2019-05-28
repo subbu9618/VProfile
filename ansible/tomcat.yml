@@ -20,6 +20,6 @@
       shell: cp /tmp/{{vprofile_version}} /root/apache-tomcat-8.5.41/webapps
 
     - name: Link latest vprofile version
-      file: src=/root/apache-tomcat-8.5.41/webapps/{{time}}-{{build}} dest=/root/apache-tomcat-8.5.41/webapps/VProfile state=link
+      file: src=/root/apache-tomcat-8.5.41/webapps/{{vprofile_version}} dest=/root/apache-tomcat-8.5.41/webapps/VProfile state=link
 
 
